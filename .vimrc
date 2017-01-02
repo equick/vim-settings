@@ -136,3 +136,7 @@ map <C-n> :NERDTreeToggle<CR>
 " open a NERDTree automatically when vim starts up if no files were specified
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+" Linux copy/paste
+vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+nmap <Insert> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
