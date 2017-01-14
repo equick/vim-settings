@@ -140,3 +140,8 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Linux copy/paste
 vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
 nmap <Insert> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
+
+" tabs
+let NERDTreeMapOpenInTab='t' " press t to open file in new tab
+let notabs = 0 
+nnoremap <silent> <F8> :let notabs=!notabs<Bar>:if notabs<Bar>:tabo<Bar>:else<Bar>:tab ball<Bar>:tabn<Bar>:endif<CR> " F8 to toggle tabs
